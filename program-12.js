@@ -14,14 +14,21 @@
 
 const arr = ["JavaScript", "Python", "Java", "C++", "Ruby", "Swift"];
 
-function findLArgestWord(arr) {
-  let largestWord = "";
+function findLongestWords(arr) {
+  let maxLength = 0;
+  let longestWords = [];
+
   arr.forEach((word) => {
-    if (word.length > largestWord.length) {
-      largestWord = word;
+    if (word.length > maxLength) {
+      maxLength = word.length;
+      longestWords = [word];
+    } else if (word.length === maxLength) {
+      longestWords.push(word);
     }
   });
-  return largestWord;
+
+  return longestWords.length > 1 ? longestWords.join(", ") : longestWords[0];
 }
 
-console.log(findLArgestWord(arr));
+const result = findLongestWords(arr);
+console.log(result);

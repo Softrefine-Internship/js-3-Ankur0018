@@ -10,3 +10,26 @@
 
 // Output:
 // { 'John' => [ 1 ], 'Alice' => [ 2, 4 ], 'Bob' => [ 3 ] }
+
+const arr = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Alice" },
+  { id: 3, name: "Bob" },
+  { id: 4, name: "Alice" },
+];
+
+function groupByProperty(arr, property) {
+  const grouped = {};
+
+  arr.forEach((item) => {
+    const key = item[property];
+    if (!grouped[key]) {
+      grouped[key] = [];
+    }
+    grouped[key].push(item.id);
+  });
+
+  return grouped;
+}
+
+console.log(groupByProperty(arr, "name"));

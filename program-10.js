@@ -5,15 +5,22 @@
 
 const str = "This is a demo String find the largest word from it";
 
-function findLArgestWord(str) {
-  const arr = str.split(" ");
-  let largestWord = "";
-  arr.forEach((word) => {
-    if (word.length > largestWord.length) {
-      largestWord = word;
+function findLongestWords(str) {
+  const words = str.split(" ");
+  let maxLength = 0;
+  let longestWords = [];
+
+  words.forEach((word) => {
+    if (word.length > maxLength) {
+      maxLength = word.length;
+      longestWords = [word];
+    } else if (word.length === maxLength) {
+      longestWords.push(word);
     }
   });
-  return largestWord;
+
+  return longestWords.length > 1 ? longestWords.join(", ") : longestWords[0];
 }
 
-console.log(findLArgestWord(str));
+const result = findLongestWords(str);
+console.log(result);
